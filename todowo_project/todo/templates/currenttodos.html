@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+Current
+
+<ul>
+    {% for todo in todos %}
+        <li>
+            <a href="{% url 'todo' todo.id %}">
+            {% if todo.important %}<b>{% endif %}
+            {{ todo.title }}
+            {% if todo.important %}</b>{% endif %}
+            {% if todo.context %}
+                - {{  todo.context }}
+            {% endif %}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}
