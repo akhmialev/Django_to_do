@@ -1,21 +1,27 @@
 {% extends 'base.html' %}
 
 {% block content %}
-Completed
+<div class="row justify-content-center mt-5">
+    <div class="col-md-10">
+        <h1>Completed Todos</h1>
+    </div>
+</div>
 
-<ul>
-    {% for todo in todos %}
-        <li>
-            <a href="{% url 'todo' todo.id %}">
-            {% if todo.important %}<b>{% endif %}
-            {{ todo.title }}
-            {% if todo.important %}</b>{% endif %}
-            {% if todo.context %}
-                - {{  todo.context }}
-            {% endif %}
-                {{ todo.datecompleted|date:'M j Y H:i' }}
-            </a>
-        </li>
-    {% endfor %}
-</ul>
+<div class="row justify-content-center mt-5">
+    <div class="col-md-10">
+        <div class="list-group">
+            {% for todo in todos %}
+                <a href="{% url 'todo' todo.id %}">
+                    {% if todo.important %}<b>{% endif %}
+                    {{ todo.title }}
+                    {% if todo.important %}</b>{% endif %}
+                    {% if todo.context %}
+                    - {{ todo.context }}
+                    {% endif %}
+                    {{ todo.datecompleted|date:'M j Y H:i' }}
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
 {% endblock %}
